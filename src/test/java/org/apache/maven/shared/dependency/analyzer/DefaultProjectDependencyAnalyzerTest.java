@@ -307,7 +307,10 @@ public class DefaultProjectDependencyAnalyzerTest
         throws TestToolsException, ProjectDependencyAnalyzerException
     {
         // java.lang.annotation.ElementType.TYPE_USE introduced with Java 1.8
-        Assume.assumeTrue( SystemUtils.isJavaVersionAtLeast( JavaVersion.JAVA_1_8 ) );
+        if ( !SystemUtils.isJavaVersionAtLeast( JavaVersion.JAVA_1_8 ) )
+        {
+            return;
+        }
 
         Properties properties = new Properties();
         properties.put( "maven.compiler.source", "1.8" );
